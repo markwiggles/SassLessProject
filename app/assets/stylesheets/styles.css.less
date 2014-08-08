@@ -1,0 +1,83 @@
+@baseColor: #535353;
+@myColor1: navy;
+@myColor2: blue;
+@myColor3: green;
+
+@paddingSm: 3px;
+@paddingLg: 10px;
+
+@stringVar: " and so it goes";
+
+.center {
+  text-align: center;
+}
+
+.small {
+  padding: @paddingSm
+}
+
+.large {
+  padding: @paddingLg + 10;
+}
+
+header {
+  font-family: Helvetica, Arial, sans-serif;
+  background-color: lighten(@baseColor, 60%);
+  border: 1px solid darken(@baseColor, 10%);
+  color: @baseColor;
+
+  h1 {
+    color: @myColor1;
+    .large;
+    .center;
+    &:hover {
+      color:@myColor3;
+    }
+  }
+}
+
+.changeColor(@color) {
+  color: @color;
+}
+
+.border(@color: blue, @width: 1px) {
+  border: solid @width @color;
+}
+
+
+
+h2 {
+  color: @myColor2;
+  .large;
+}
+
+h3 {
+  color: @myColor3;
+  .large;
+  .border(3px,red);
+}
+
+#para:after {
+  content: @stringVar;
+  .changeColor(@myColor2);
+}
+
+.alert(error) {
+  @color: red;
+  border: 2px solid lighten(@color,10%);
+}
+.alert(warning) {
+  @color: goldenrod;
+  border: 2px solid lighten(@color,10%)
+}
+.alert(@_) {
+  padding: 20px;
+}
+
+#para {
+  .alert(error)
+}
+
+
+
+
