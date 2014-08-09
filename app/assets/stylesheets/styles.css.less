@@ -31,7 +31,7 @@ header {
     .large;
     .center;
     &:hover {
-      color:@myColor3;
+      color: @myColor3;
     }
   }
 }
@@ -44,8 +44,6 @@ header {
   border: solid @width @color;
 }
 
-
-
 h2 {
   color: @myColor2;
   .large;
@@ -54,7 +52,7 @@ h2 {
 h3 {
   color: @myColor3;
   .large;
-  .border(3px,red);
+  .border(3px, red);
 }
 
 #para:after {
@@ -64,19 +62,45 @@ h3 {
 
 .alert(error) {
   @color: red;
-  border: 2px solid lighten(@color,10%);
+  border: 2px solid lighten(@color, 10%);
 }
+
 .alert(warning) {
   @color: goldenrod;
-  border: 2px solid lighten(@color,10%)
+  border: 2px solid lighten(@color, 10%)
 }
+
 .alert(@_) {
   padding: 20px;
 }
 
-@type: error;
+@type: none;
 #para {
   .alert(@type)
+}
+
+.text3d(@color) when (lightness(@color) <= 50%) {
+  color: @color;
+  font-size: 32pt;
+  border: 2px solid grey;
+  text-shadow: 3px 3px 3px lighten(@color, 50%);
+}
+
+.text3d(@color) when (lightness(@color) > 50%) {
+  color: @color;
+  font-size: 32pt;
+  border: 2px dashed grey;
+  text-shadow: 3px 3px 3px lighten(@color, 50%);
+}
+
+.text3d(@_) {
+
+}
+
+#content {
+  h1 {
+    .text3d(#777);
+  }
 }
 
 
